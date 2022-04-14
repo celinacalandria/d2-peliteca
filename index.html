@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mi Peliteca</title>
+
+    <link rel="stylesheet" href="estilo.css"> 
+    <script src="peliculas.js"></script>
+    <script src="peliteca.js"></script>
+</head>
+
+<body onload="init()" class="body">
+
+    <header class="header">
+        <h1 class="headerTitulo">PELITECA</h1>
+        <div id="saludo"> </div>
+    </header>
+
+    <main class="main">
+        <div class="mainBotones" id="divBotones">
+            <div class="botonesAcciones">
+                <button id="cargarPeliculas">CARGAR PELÍCULAS</button>
+                <button id="listarPeliculas">LISTAR PELÍCULAS</button>
+                <div id="peliculasCargadas">
+                <div id="ordenar"></div> 
+                </div>
+            </div>
+            
+            <div class="botonesListas">
+                <button id="listaWatchlist">WATCHLIST</button>
+                <div id="peliculasWatchlist"> </div>
+                <button id="listaFavoritas">FAVORITAS</button>
+                <div id="peliculasFavoritas"></div>
+                <button id="listaVistas">VISTAS</button>
+                <div id="peliculasVistas"> </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>2022</p>
+    </footer>
+
+</body>
+</html>

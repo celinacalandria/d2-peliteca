@@ -1,0 +1,65 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    background-color: #0B0A07;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.header{
+    margin: 2rem;
+    text-align: center;
+    color: #467256;
+    font-size: x-large;
+}
+
+.mainBotones{
+    text-align: center;  
+    display: flex;
+    flex-direction: column;  
+}
+
+.botonesAcciones button{
+    margin: 2rem;
+    padding: 1rem;
+    color: #4B4E6D;
+}
+
+.botonesListas button{
+    margin: 1rem;
+    padding: 1rem;
+    color: #5E7D82;
+}
+
+.styledBtn{
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.styledBtn:hover{
+    background-color: whitesmoke;
+    color: #467256;
+}
+
+.bienvenida{
+    margin: 1rem;
+    letter-spacing: 0.2rem;
+    font-size: large;
+    color: #493548;
+    text-align: center;
+}
+
+.nodoLi{
+    display: flex;
+    flex-direction: column;
+    color: #467256;
+    list-style-type: none;
+}
+
+.footer{
+    text-align: center;
+    margin: 2rem;
+    margin-top: 10rem;
+    font-size: medium;
+    color: #493548;
+}

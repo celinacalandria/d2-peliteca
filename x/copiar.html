@@ -1,0 +1,85 @@
+<form id="myForm" >
+<input type="text" id="nombre" name="nombre" placeholder="Nombre: "/>
+<input type="text" id="apellido" name="apellido" placeholder="Apellido: "/>
+<input type="submit" value="enviar" id="enviar">
+</form>
+
+<script>
+
+    //Submit 
+    const nodoFormulario = document.querySelector("#myForm");
+    nodoFormulario.addEventListener("submit", (event)=>{
+
+        event.preventDefault();
+
+        const nombre = document.querySelector("#nombre");
+        const apellido = document.querySelector("#nombre");
+        document.querySelector("#enviar").value="Enviando...";
+        if(nombre.value.trim()!=="" && apellido.value.trim()!=="")
+        {
+            alert("ENVIADO OK");
+        }
+        else 
+        {
+            alert("NO ESTÁ COMPLETO");
+        }
+
+    })
+
+  
+    const btn = document.querySelector("#myBtn");
+  btn.addEventListener("click", ()=>mostrarLista());
+
+  function mostrarLista()
+  {
+    const lista = document.querySelector("#lista");
+    usuarios.forEach(element => {
+        const nodoLi = document.createElement("li");
+        nodoLi.setAttribute("style", "width:300px;border:1px solid green;border-radius:20px;margin-top:5px;padding:3%;")
+        nodoLi.innerHTML=`${element.first_name}`;
+        lista.appendChild(nodoLi);
+    });
+  }
+
+
+
+  function listarPeliculas()
+{
+    const boton2= document.querySelector("#listarPeliculas");
+    boton2.setAttribute("class", "styledBtn");
+    boton2.addEventListener("click", ()=>functionListarPeliculas());
+}
+
+function functionListarPeliculas(){
+    const listaCargadas = document.querySelector("#peliculasCargadas");
+    peliteca.forEach(element => {
+        const nodoLi = document.createElement("li");
+        nodoLi.setAttribute("class", "nodoLi");
+        nodoLi.innerHTML = `${element.titulo} - ${element.director} - ${enQueListaEsta.queListaEs}`;
+        listaCargadas.appendChild(nodoLi);
+    })
+}
+
+
+
+function verListaWatchlist()
+{
+    const boton3= document.querySelector("#listaWatchlist");
+    boton3.setAttribute("class", "styledBtn");
+    boton3.addEventListener("click", ()=>mostrarListaWatchlist());
+}
+
+function mostrarListaWatchlist()
+{
+    const listaWatchlist = document.querySelector("#peliculasWatchlist");
+    const paraVer = peliteca.filter(pelicula => pelicula.watchlist);
+    paraVer.forEach(element => {
+        const nodoLi = document.createElement("li");
+        nodoLi.setAttribute("class", "nodoLi");
+        nodoLi.innerHTML = `${element.titulo} - ${element.director} - ${element.año}`;
+        listaWatchlist.appendChild(nodoLi);
+    })
+}
+
+</script>
+
