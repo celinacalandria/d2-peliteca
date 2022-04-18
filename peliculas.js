@@ -8,3 +8,4 @@ const peliteca = [
     {id: 005, titulo: "Love", director: "Gaspar Noé", año: 2015, genero: "Drama/Romance", duracion: 104, watchlist: true},
 ];
 
+const miPeliteca= localStorage.setItem("miPeliteca", JSON.stringify(peliteca));

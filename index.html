@@ -19,13 +19,41 @@
         <div id="saludo"> </div>
     </header>
 
+    <section id="section1" class="section">
+        <div id="divImagenes">
+            <img src="./img/americanPsycho.jpg">
+            <img src="./img/harryPotterAndThePOA.jpg">
+            <img src="./img/priceAndPrejudice.jpg">
+            <img src="./img/thePrincessDiaries.jpg">
+            <img src="./img/killBill.jpg">
+            <img src="./img/thePursuitOfHappyness.jpg">
+        </div>
+    </section>
+
     <main class="main">
         <div class="mainBotones" id="divBotones">
             <div class="botonesAcciones">
-                <button id="cargarPeliculas">CARGAR PELÍCULAS</button>
-                <button id="listarPeliculas">LISTAR PELÍCULAS</button>
-                <div id="peliculasCargadas">
-                <div id="ordenar"></div> 
+                <div id="divCargarPeliculas"> 
+                    <button id="cargarPeliculas">CARGAR PELÍCULAS</button>
+                    
+                    <form id="form" class="mainForm">
+                        <input type="text" id="titulo" name="titulo" placeholder="Título">
+                        <input type="text" id="director" name="director" placeholder="Director/a">
+                        <input type="number" id="año" name="año" placeholder="Año"> 
+                        <input type="text" id="genero" name="genero" placeholder="Género">
+                        <input type="number" id="duracion" name="duracion" placeholder="Duración">
+                        <input type="submit" value="cargar" id="cargar">
+                    </form> 
+                </div>
+
+                <div id="divListarPeliculas">
+                    <button id="listarPeliculas">LISTAR PELÍCULAS</button>
+                    
+                    <div id="peliculasCargadas">
+                        <div id="listaPerteneciente">
+                            
+                        </div> 
+                    </div>
                 </div>
             </div>
             
@@ -40,9 +68,23 @@
         </div>
     </main>
 
+    <section id="section2" class="section">
+        <div id="divImagenes">
+            <img src="./img/500daysOfSummer.jpg">
+            <img src="./img/edwardScissorhands.jpg">
+            <img src="./img/theGrandHotelBudapest.jpg">
+            <img src="./img/marriageStory.jpg">
+            <img src="./img/theMatrix.jpg">
+            <img src="./img/10thingsIHateAboutYou.jpg">
+        </div>
+    </section>
+
+
     <footer class="footer">
         <p>2022</p>
     </footer>
+
+
 
 </body>
 </html>

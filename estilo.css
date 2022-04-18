@@ -12,6 +12,15 @@
     font-size: x-large;
 }
 
+#divImagenes{
+    display: flex;
+    flex-direction: row;
+}
+
+#divImagenes img{
+    width: 16.667%;
+}
+
 .mainBotones{
     text-align: center;  
     display: flex;
@@ -30,6 +39,11 @@
     color: #5E7D82;
 }
 
+.pLista{
+    color: aliceblue;
+    font-size: 1rem;
+}
+
 .styledBtn{
     border-radius: 10px;
     font-weight: bold;
@@ -39,6 +53,22 @@
 .styledBtn:hover{
     background-color: whitesmoke;
     color: #467256;
+}
+
+#form{
+    display: flex;
+    flex-direction: column;
+}
+
+#form input{
+    text-align: center;
+    color: #467256;
+    width: 30%;
+    border: 0.5rem solid #0B0A07;
+}
+
+.mainForm input:hover{
+    border: 0.6rem solid #0B0A07 #467256 #0B0A07 #0B0A07;
 }
 
 .bienvenida{

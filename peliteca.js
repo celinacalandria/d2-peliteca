@@ -1,3 +1,4 @@
+const listaPerteneciente = document.getElementById("listaPerteneciente");
 
 //PELICULAS
 class Pelicula{
@@ -25,26 +26,39 @@ class Pelicula{
     {
         this.favoritas = true;
     }
-    enQueListaEsta()
-    {
-        let queListaEs = "";
-        if (queListaEs==this.vista)
+    // NO FUNCIONA
+    /* enQueListaEsta()
+    { 
+       let queListaEs = true;
+        if (queListaEs=this.vista)
         {
-            queListaEs = "VISTA";
+            const pLista = document.createElement("p");
+            pLista.setAttribute("class", "pLista");
+            pLista.innerText = "VISTA";
+            listaPerteneciente.appendChild(pLista);
         }
         else if(queListaEs=this.watchlist)
         {
-            queListaEs = "WATCHLIST";
+            const pLista = document.createElement("p");
+            pLista.setAttribute("class", "pLista");
+            pLista.innerText = "WATCHLIST";
+            listaPerteneciente.appendChild(pLista);
         }
         else if (queListaEs=this.favoritas)
         {
-            queListaEs= "FAVORITAS";
+            const pLista = document.createElement("p");
+            pLista.setAttribute("class", "pLista");
+            pLista.innerText = "FAVORITA";
+            listaPerteneciente.appendChild(pLista);
         }
         else
         {
-            queListaEs = "no tiene lista asociada";
+            const pLista = document.createElement("p");
+            pLista.setAttribute("class", "pLista");
+            pLista.innerText = "no tienen ninguna linea asociada";
+            listaPerteneciente.appendChild(pLista);
         }
-    }
+    } */
 }
 
 
@@ -53,7 +67,7 @@ class Pelicula{
 //INIT
 function init()
 {
-    escribirBienvenida();
+    /* escribirBienvenida() */;
     mostrarMenu();
 }
 
@@ -84,9 +98,9 @@ function agregarPeliculas()
 
 function functionIngresarPelicula()
 {
-    const pelicula = ingresarPelicula();
-    peliteca.push(pelicula);
-    let choice = prompt(`¿A qué lista deseas agregarla?
+    ingresarPelicula();
+    
+  /*   let choice = prompt(`¿A qué lista deseas agregarla?
                         A. Películas VISTAS
                         B. Películas en WATCHLIST
                          C. Películas FAVORITAS`)
@@ -103,18 +117,39 @@ function functionIngresarPelicula()
             pelicula.agregarPeliFavoritas();
         }
     alert("Película cargada");
-    console.log(pelicula); 
+    console.log(pelicula);  */
 }
+
 
 function ingresarPelicula()
 {
-    let id = parseInt(prompt("ID:"));
-    let titulo = prompt("Título:");
-    let director = prompt("Director/a:");
-    let año = prompt("Año:");
-    let genero = prompt("Género:");
-    let duracion = parseInt(prompt("Duración (mins.):"));
-    return new Pelicula(titulo, director, año, genero, duracion);
+    const nodoForm = document.querySelector("#form");
+    nodoForm.setAttribute("class", "nodoForm");
+    nodoForm.addEventListener("submit", (event)=>{
+
+        event.preventDefault();
+
+        let titulo = document.querySelector("#titulo");
+        let director = document.querySelector("#director");
+        let año = document.querySelector("#año");
+        let genero = document.querySelector("#genero");
+        let duracion = document.querySelector("#duracion");
+        document.querySelector("#cargar").value= "agregando...";
+
+        let newPelicula = new Pelicula(titulo, director, año, genero, duracion);
+        peliteca.push(newPelicula);
+
+        localStorage.setItem("miPeliteca", JSON.stringify(peliteca));
+
+        //funciono
+        //localStorage.setItem("titulo", titulo.value);
+
+        //estaba antes cuando la const pelicula existia
+        //return new Pelicula(titulo, director, año, genero, duracion);
+
+        //no se
+        //localStorage.setItem("key", JSON.stringify(Pelicula.value));
+    })    
 }
 
 function listarPeliculas()
@@ -122,12 +157,6 @@ function listarPeliculas()
     const boton2= document.querySelector("#listarPeliculas");
     boton2.setAttribute("class", "styledBtn");
     boton2.addEventListener("click", ()=>functionListarPeliculas());
-
-    /* const ordenar = document.querySelector("#ordenar");
-    const botonOrdenar = document.createElement("button");
-    botonOrdenar.setAttribute("class", "styledBtn");
-    ordenar.appendChild(botonOrdenar);
-    botonOrdenar.addEventListener("click", ()=>ordenarPeliculas()); */
 }
 
 function functionListarPeliculas(){
@@ -140,15 +169,6 @@ function functionListarPeliculas(){
     })
 }
 
-/* function ordenarPeliculas()
-{
-    peliteca.sort((a,b)=>{
-        if(a.año > b.año)
-            return -1;
-        else 
-            return 1;
-    });
-} */
 
 function verListaWatchlist()
 {
@@ -206,68 +226,4 @@ function mostrarListaVistas()
         listaVistas.appendChild(nodoLi);
     })
 }
-
-//MENU VIEJO
-/* function mostrarMenu()
-{
-    let op="";
-    while(op!=="F")
-    {
-        op = prompt(`Ingrese una opción:
-                            A. Agregar película a miPeliteca
-                            B. Listar películas
-                            C. Ver películas en WATCHLIST
-                            D. Ver películas FAVORITAS
-                            E. Ver películas VISTAS
-                            F. Salir`);
-        if(op==="A")
-        {
-            const pelicula = ingresarPelicula();
-            peliteca.push(pelicula);
-            let choice = prompt(`¿A qué lista deseas agregarla?
-                                A. Películas VISTAS
-                                B. Películas en WATCHLIST
-                                C. Películas FAVORITAS`)
-            if(choice==="A")
-            {
-                pelicula.agregarPeliVistas();
-            }
-            else if(choice==="B")
-            {
-                pelicula.agregarPeliWatchlist();
-            }
-            else if(choice==="C")
-            {
-                pelicula.agregarPeliFavoritas();
-            }
-            alert("Película cargada");
-            console.log(pelicula); 
-        }
-        else if(op==="B")
-        {
-            console.log(peliteca);
-        }
-        else if(op==="C"){
-            const paraVer = peliteca.filter( pelicula => pelicula.watchlist );
-            console.log(paraVer);
-        }
-        else if(op==="D"){
-            const misFavoritas = peliteca.filter (pelicula => pelicula.favoritas);
-            console.log(misFavoritas);
-        }
-        else if(op==="E"){
-            const misVitas = peliteca.filter (peliteca => peliteca.vista);
-            console.log(misVitas);
-        }
-        else if(op==="F")
-        {
-            alert("miPeliteca está actualizada");
-        }
-        else
-        {
-            alert("Opción inválida");
-        }
-    }
-}
- */
 
