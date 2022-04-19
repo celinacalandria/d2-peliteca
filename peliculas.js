@@ -9,3 +9,4 @@ const peliteca = [
 ];
 
 const miPeliteca= localStorage.setItem("miPeliteca", JSON.stringify(peliteca));
+

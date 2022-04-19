@@ -21,10 +21,14 @@
     width: 16.667%;
 }
 
-.mainBotones{
-    text-align: center;  
+#cargar{
+    color: #467256;
+}
+
+.botonesAcciones{
     display: flex;
-    flex-direction: column;  
+    flex: row;
+    justify-content: space-evenly;
 }
 
 .botonesAcciones button{
@@ -33,8 +37,22 @@
     color: #4B4E6D;
 }
 
+#divCargarPeliculas{
+    text-align: center;
+}
+
+#divListarPeliculas{
+    text-align: center;
+}
+
+.botonesListas{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
 .botonesListas button{
-    margin: 1rem;
+    margin: 5rem;
     padding: 1rem;
     color: #5E7D82;
 }
@@ -58,12 +76,13 @@
 #form{
     display: flex;
     flex-direction: column;
+    text-align: center;
 }
 
 #form input{
     text-align: center;
     color: #467256;
-    width: 30%;
+    width: 100%;
     border: 0.5rem solid #0B0A07;
 }
 
@@ -71,14 +90,17 @@
     border: 0.6rem solid #0B0A07 #467256 #0B0A07 #0B0A07;
 }
 
-.bienvenida{
-    margin: 1rem;
-    letter-spacing: 0.2rem;
-    font-size: large;
-    color: #493548;
-    text-align: center;
-}
 
+#form div{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    color: #467256;
+    margin: 1rem;
+    text-align: center;
+    font-size: 1rem;
+
+}
 .nodoLi{
     display: flex;
     flex-direction: column;

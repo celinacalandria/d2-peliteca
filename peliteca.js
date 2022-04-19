@@ -1,5 +1,3 @@
-const listaPerteneciente = document.getElementById("listaPerteneciente");
-
 //PELICULAS
 class Pelicula{
     constructor(id, titulo, director, año, genero, duracion){
@@ -26,10 +24,13 @@ class Pelicula{
     {
         this.favoritas = true;
     }
-    // NO FUNCIONA
-    /* enQueListaEsta()
+    
+    // NO FUNCIONA BIEN
+    //esta mal definido queListaEs pero no se como agregarle un valor para compararlo despues.
+    enQueListaEsta()
     { 
-       let queListaEs = true;
+        const listaPerteneciente = document.getElementById("listaPerteneciente"); 
+        let queListaEs = true;
         if (queListaEs=this.vista)
         {
             const pLista = document.createElement("p");
@@ -55,31 +56,19 @@ class Pelicula{
         {
             const pLista = document.createElement("p");
             pLista.setAttribute("class", "pLista");
-            pLista.innerText = "no tienen ninguna linea asociada";
+            pLista.innerText = "no tiene ninguna lista asociada";
             listaPerteneciente.appendChild(pLista);
         }
-    } */
+    }
 }
-
-
-
 
 //INIT
 function init()
 {
-    /* escribirBienvenida() */;
     mostrarMenu();
 }
 
-function escribirBienvenida(){
-    const saludo = document.querySelector("#saludo");
-    const bienvenida =document.createElement("h2");
-    bienvenida.setAttribute("class", "bienvenida");
-    let nombre = prompt("and you are...?")
-    bienvenida.innerText= `¡Bienvenidx ${nombre}!`;
-    saludo.appendChild(bienvenida);
-}
-
+//MOSTRAR MENU
 function mostrarMenu()
 {
     agregarPeliculas();
@@ -89,6 +78,7 @@ function mostrarMenu()
     verListaVistas();
 }
 
+//AGREGAR PELICULAS
 function agregarPeliculas()
 {
     const boton1 = document.querySelector("#cargarPeliculas");
@@ -100,58 +90,45 @@ function functionIngresarPelicula()
 {
     ingresarPelicula();
     
-  /*   let choice = prompt(`¿A qué lista deseas agregarla?
-                        A. Películas VISTAS
-                        B. Películas en WATCHLIST
-                         C. Películas FAVORITAS`)
-    if(choice==="A")
-        {
-            pelicula.agregarPeliVistas();
-        }
-        else if(choice==="B")
-        {
-            pelicula.agregarPeliWatchlist();
-        }
-        else if(choice==="C")
-        {
-            pelicula.agregarPeliFavoritas();
-        }
-    alert("Película cargada");
-    console.log(pelicula);  */
+  /* ESTA FUNCION ME QUEDO ASI PORQUE FUI MODIFICANDO EL CODIGO DESPUES. 
+  POSTERIORMENTE LA BORRO Y DEJO TODO MAS PROLIJO EN MENOS LINEAS. 
+  NO LA CAMBIO AHORA PARA PREVENIR ERRORES */
+
 }
 
-
-function ingresarPelicula()
+function ingresarPelicula(event)
 {
-    const nodoForm = document.querySelector("#form");
-    nodoForm.setAttribute("class", "nodoForm");
-    nodoForm.addEventListener("submit", (event)=>{
+    event.preventDefault();
 
-        event.preventDefault();
+    let titulo = event.target[0].value;
+    let director = event.target[1].value;
+    let año = event.target[2].value;
+    let genero = event.target[3].value;
+    let duracion = event.target[4].value;
 
-        let titulo = document.querySelector("#titulo");
-        let director = document.querySelector("#director");
-        let año = document.querySelector("#año");
-        let genero = document.querySelector("#genero");
-        let duracion = document.querySelector("#duracion");
-        document.querySelector("#cargar").value= "agregando...";
+    let pelicula = new Pelicula(titulo, director, año, genero, duracion);
 
-        let newPelicula = new Pelicula(titulo, director, año, genero, duracion);
-        peliteca.push(newPelicula);
+    let choice = document.getElementById("listaAgregada").value;
+    if(choice==="A")
+    {
+        pelicula.agregarPeliVistas();
+    }
+    else if(choice==="B")
+    {
+        pelicula.agregarPeliWatchlist();
+    }
+    else if(choice==="C")
+    {
+        pelicula.agregarPeliFavoritas();
+    }
 
-        localStorage.setItem("miPeliteca", JSON.stringify(peliteca));
+    peliteca.push(pelicula);
 
-        //funciono
-        //localStorage.setItem("titulo", titulo.value);
-
-        //estaba antes cuando la const pelicula existia
-        //return new Pelicula(titulo, director, año, genero, duracion);
-
-        //no se
-        //localStorage.setItem("key", JSON.stringify(Pelicula.value));
-    })    
+    localStorage.setItem("miPeliteca", JSON.stringify(peliteca));
+    console.log(event);
 }
 
+//LISTAR PELICULAS
 function listarPeliculas()
 {
     const boton2= document.querySelector("#listarPeliculas");
@@ -169,7 +146,7 @@ function functionListarPeliculas(){
     })
 }
 
-
+//LISTA WATCHLIST
 function verListaWatchlist()
 {
     const boton3= document.querySelector("#listaWatchlist");
@@ -189,6 +166,7 @@ function mostrarListaWatchlist()
     })
 }
 
+//LISTA FAVORITAS
 function verListaFavoritas()
 {
     const boton4= document.querySelector("#listaFavoritas");
@@ -208,6 +186,7 @@ function mostrarListaFavoritas()
     })
 }
 
+//LISTA VISTAS
 function verListaVistas()
 {
     const boton5= document.querySelector("#listaVistas");
